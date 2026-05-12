@@ -6,7 +6,7 @@ from keras.layers import Dense, Conv2D, MaxPooling2D, Flatten, BatchNormalizatio
 #generators - batches
 
 train_ds = keras.utils.image_dataset_from_directory(
-    directory = '/content/train',
+    directory = BASE_DIR
     labels = 'inferred',
     label_mode = 'int',
     batch_size = 32,
@@ -14,7 +14,7 @@ train_ds = keras.utils.image_dataset_from_directory(
 )
 
 validation_ds = keras.utils.image_dataset_from_directory(
-    directory = '/content/test',
+    directory = BASE_DIR,
     labels = 'inferred',
     label_mode = 'int',
     batch_size = 32,
@@ -34,15 +34,15 @@ validation_ds = validation_ds.map(normalize)
 
 model = Sequential()
 
-model.add(Conv2D(32, kernel_size=(3,3), padding = 'valid', activation ='relu'
+model.add(Conv2D(32, kernel_size=(3,3), padding = 'valid', activation ='relu'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2), strides=2, padding='valid'))
 
-model.add(Conv2D(64, kernel_size=(3,3), padding = 'valid', activation ='relu'
+model.add(Conv2D(64, kernel_size=(3,3), padding = 'valid', activation ='relu'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2), strides=2, padding='valid'))
 
-model.add(Conv2D(128, kernel_size=(3,3), padding = 'valid', activation ='relu'
+model.add(Conv2D(128, kernel_size=(3,3), padding = 'valid', activation ='relu'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2), strides=2, padding='valid'))
 
