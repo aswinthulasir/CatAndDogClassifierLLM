@@ -78,3 +78,15 @@ plt.plot(history.history['loss'], color='red', label='train')
 plt.plot(history.history['val_loss'], color = 'blue', label ='validation')
 plt.legend()
 plt.show()
+
+# Prediction
+
+import cv2
+
+test_img = cv2.imread('/content/dog.jpg')
+plt.imshow (test_img)
+test_img.shape
+test_img = cv2.resize(test_img, (256,256))
+test_input = test_img.reshape((1,256,256,3))
+
+model.predict(test_input)
